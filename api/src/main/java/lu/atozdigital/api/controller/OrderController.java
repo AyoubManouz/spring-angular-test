@@ -1,13 +1,15 @@
 package lu.atozdigital.api.controller;
 
+import lu.atozdigital.api.dto.ArticleDto;
 import lu.atozdigital.api.dto.OrderDto;
+import lu.atozdigital.api.model.Article;
 import lu.atozdigital.api.model.Order;
 import lu.atozdigital.api.service.OrderService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,5 +32,17 @@ public class OrderController {
         return orderService.getAllOrders().stream()
                 .map(order -> modelMapper.map(order, OrderDto.class))
                 .collect(Collectors.toList());
+    }
+
+    @PostMapping
+    public ResponseEntity<OrderDto> createOrder(@RequestBody OrderDto orderDto) {
+
+        // convert DTO to entity
+        Order orderRequest = modelMapper.map(orderDto, Order.class);
+        Order order = orderService.createOrder(orderRequest);
+
+        // convert entity to DTO
+        OrderDto orderResponse = modelMapper.map(order, OrderDto.class);
+        return new ResponseEntity<OrderDto>(orderResponse, HttpStatus.CREATED);
     }
 }
