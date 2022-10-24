@@ -1,7 +1,5 @@
 package lu.atozdigital.api.dto;
 
-import lu.atozdigital.api.model.Article;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,7 +12,7 @@ public class OrderDto {
 
     private Date date;
 
-    List<Article> articles = new ArrayList<>();
+    List<ArticleDto> articles = new ArrayList<>();
 
     public OrderDto() {}
 
@@ -22,10 +20,6 @@ public class OrderDto {
         this.id = id;
         this.reference = reference;
         this.date = date;
-    }
-
-    public void addArticle(Article article) {
-        this.articles.add(article);
     }
 
     public int getId() {
@@ -52,11 +46,11 @@ public class OrderDto {
         this.date = date;
     }
 
-    public List<Article> getArticles() {
+    public List<ArticleDto> getArticles() {
         return articles;
     }
 
-    public void setArticles(List<Article> articles) {
+    public void setArticles(List<ArticleDto> articles) {
         this.articles = articles;
     }
 }

@@ -35,10 +35,6 @@ public class Order {
         this.date = date;
     }
 
-    public void addArticle(Article article) {
-        this.articles.add(article);
-    }
-
     public int getId() {
         return id;
     }

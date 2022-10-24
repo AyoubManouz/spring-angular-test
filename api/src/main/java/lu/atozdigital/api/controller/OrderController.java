@@ -1,8 +1,6 @@
 package lu.atozdigital.api.controller;
 
-import lu.atozdigital.api.dto.ArticleDto;
 import lu.atozdigital.api.dto.OrderDto;
-import lu.atozdigital.api.model.Article;
 import lu.atozdigital.api.model.Order;
 import lu.atozdigital.api.service.OrderService;
 import org.modelmapper.ModelMapper;
@@ -44,5 +42,20 @@ public class OrderController {
         // convert entity to DTO
         OrderDto orderResponse = modelMapper.map(order, OrderDto.class);
         return new ResponseEntity<OrderDto>(orderResponse, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<OrderDto> updatePost(@PathVariable int id, @RequestBody OrderDto orderDto) {
+
+        // convert DTO to Entity
+        Order orderRequest = modelMapper.map(orderDto, Order.class);
+
+        Order order = orderService.updateOrder(id, orderRequest);
+        if(order == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+
+        // entity to DTO
+        OrderDto orderResponse = modelMapper.map(order, OrderDto.class);
+
+        return ResponseEntity.ok().body(orderResponse);
     }
 }

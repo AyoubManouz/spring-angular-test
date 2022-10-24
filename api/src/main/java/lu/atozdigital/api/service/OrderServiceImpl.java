@@ -26,7 +26,14 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public Order updateOrder(int id, Order order) {
-        return null;
+    public Order updateOrder(int id, Order orderRequest) {
+        Order order = orderRepository.findById(id)
+                .orElse(null);
+        if(order == null) return null;
+
+        order.setReference(orderRequest.getReference());
+        order.setDate(orderRequest.getDate());
+        order.setArticles(orderRequest.getArticles());
+        return orderRepository.save(order);
     }
 }
