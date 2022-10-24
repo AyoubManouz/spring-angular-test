@@ -43,4 +43,16 @@ public class ArticleController {
                 .map(article -> modelMapper.map(article, ArticleDto.class))
                 .collect(Collectors.toList());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ArticleDto> getArticleById(@PathVariable(name="id") int id) {
+        Article article = articleService.getArticleById(id);
+
+        if (article == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+
+        // convert entity to DTO
+        ArticleDto articledto = modelMapper.map(article, ArticleDto.class);
+
+        return ResponseEntity.ok().body(articledto);
+    }
 }
