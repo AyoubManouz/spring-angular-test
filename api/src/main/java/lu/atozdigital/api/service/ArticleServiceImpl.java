@@ -17,7 +17,7 @@ public class ArticleServiceImpl implements ArticleService{
 
     @Override
     public Article createArticle(Article article) {
-        return null;
+        return articleRepository.save(article);
     }
 
     @Override
