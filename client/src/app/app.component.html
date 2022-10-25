@@ -1,5 +1,62 @@
-<div class="container">
-  <h3 class="mt-3 mb-3">Articles</h3>
+<header class="header-main border-bottom shadow-xl-bottom bg-light sticky-top">
+  <div class="container-fluid">
+    <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
+      <div class="col-md-2" align="center">
+        <a routerLink="/articles">
+          <img
+            class="d-none d-md-flex"
+            src="assets/pictures/shoes-paris.png"
+            width="200"
+          />
+        </a>
+      </div>
 
-  <app-article-list></app-article-list>
-</div>
+      <div class="col-md-8" align="center">
+        <a routerLink="/articles">
+          <img
+            src="assets/pictures/shoes-paris-brand.png"
+            width="200"
+            alt="shoes-paris"
+          />
+        </a>
+      </div>
+
+      <div class="col-md-2">
+        <div class="d-flex d-none d-md-flex flex-row align-items-center">
+          <span class="shop-bag bg-dark p-2"
+            ><i class="fa fa-shopping-cart text-light" aria-hidden="true"></i
+          ></span>
+          <div class="d-flex flex-column ms-2">
+            <span class="qty">1 Order</span>
+            <span class="fw-bold">$27.90</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="h-100 w-100 pb-5">
+  <!-- PAGE CONTAINER-->
+  <div class="container">
+    <!-- MAIN CONTENT-->
+    <router-outlet></router-outlet>
+  </div>
+</main>
+
+<!-- END PAGE CONTAINER-->
+<footer class="bg-dark sticky-bottom" align="center">
+  <div class="container">
+    <div class="row py-3">
+      <div class="col">
+        <a href="#" class="btn text-light">About Us</a>
+      </div>
+      <div class="col">
+        <a href="#" class="btn text-light">Contact Us</a>
+      </div>
+      <div class="col">
+        <a href="#" class="btn text-light">Help</a>
+      </div>
+    </div>
+  </div>
+</footer>

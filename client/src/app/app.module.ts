@@ -5,6 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ArticleListComponent } from './components/article-list/article-list.component';
 import { ArticleService } from './services/article.service';
+import { RouterModule,Routes } from '@angular/router';
+
+const routes: Routes = [
+  {path: 'articles', component: ArticleListComponent},
+  {path: '', redirectTo: '/articles', pathMatch:'full'},
+  {path: '**', redirectTo: '/articles', pathMatch:'full'},
+];
 
 @NgModule({
   declarations: [
@@ -12,6 +19,7 @@ import { ArticleService } from './services/article.service';
     ArticleListComponent
   ],
   imports: [
+    RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule
   ],

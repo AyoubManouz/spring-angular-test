@@ -1,3 +1,11 @@
-<p *ngFor="let article of articles">
-    {{ article.name }}: {{ article.price | currency:'MAD':'symbol':'':'fr' }}
-</p>
+<div class="row">
+    <div *ngFor="let article of articles" class="col-md-4" align="center">
+        <div>
+            <img src="{{ article.picture }}" alt="" height="300" class="img-responsive" />
+        </div>
+        
+        <h5><strong>{{ article.name }}</strong></h5>
+        <h6>{{ article.price | currency:'MAD':'symbol':'':'fr' }}</h6>
+        <a href="#" class="btn btn-dark btn-sm">Add to order</a>
+    </div>
+</div>
