@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from 'src/app/common/article';
 import { ArticleService } from 'src/app/services/article.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-article-list',
@@ -11,7 +12,7 @@ export class ArticleListComponent implements OnInit {
 
   articles: Article[] = [];
 
-  constructor(private articleService: ArticleService) { }
+  constructor(private articleService: ArticleService, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.listArticles();
@@ -25,4 +26,11 @@ export class ArticleListComponent implements OnInit {
     )
   }
 
+  addOrRemoveArticle(article: Article) {
+    this.cartService.addOrRemoveArticle(article);
+  }
+
+  isExistedInCart(article: Article): boolean {
+    return this.cartService.existedArticle(article) !== undefined;
+  }
 }

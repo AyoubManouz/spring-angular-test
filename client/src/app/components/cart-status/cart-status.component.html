@@ -1,0 +1,15 @@
+<div class="d-flex d-none d-md-flex flex-row justify-content-end align-items-center">
+  <span class="bg-dark p-2">
+    <a routerLink="/cart">
+      <div class="text-light fw-bold">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+      </div>
+    </a>
+  </span>
+  <div class="d-flex flex-column ms-2">
+    <a class="btn" routerLink="/cart">
+      <div class="fw-bold">{{ totalArticles }} Articles</div>
+      <div class="fw-bold">{{ totalPrice | currency:'MAD':'symbol':'':'fr' }}</div>
+    </a>
+  </div>
+</div>

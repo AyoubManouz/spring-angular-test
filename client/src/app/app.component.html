@@ -1,42 +1,36 @@
-<header class="header-main border-bottom shadow-xl-bottom bg-light sticky-top">
+<header class="header-main border-bottom shadow-xl-bottom bg-light fixed-top">
   <div class="container-fluid">
     <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
-      <div class="col-md-2" align="center">
-        <a routerLink="/articles">
+      <div class="col-sm-2" align="center">
+        <div class="d-flex justify-content-start">
+          <a routerLink="/articles">
           <img
-            class="d-none d-md-flex"
-            src="assets/pictures/shoes-paris.png"
-            width="200"
-          />
-        </a>
+              class="d-none d-md-flex"
+              src="assets/pictures/shoes-paris.png"
+              width="120"
+            />
+          </a>
+        </div>
       </div>
 
-      <div class="col-md-8" align="center">
+      <div class="col-sm-8" align="center">
         <a routerLink="/articles">
           <img
             src="assets/pictures/shoes-paris-brand.png"
-            width="200"
+            width="120"
             alt="shoes-paris"
           />
         </a>
       </div>
 
-      <div class="col-md-2">
-        <div class="d-flex d-none d-md-flex flex-row align-items-center">
-          <span class="shop-bag bg-dark p-2"
-            ><i class="fa fa-shopping-cart text-light" aria-hidden="true"></i
-          ></span>
-          <div class="d-flex flex-column ms-2">
-            <span class="qty">1 Order</span>
-            <span class="fw-bold">$27.90</span>
-          </div>
-        </div>
+      <div class="col-sm-2">
+        <app-cart-status></app-cart-status>
       </div>
     </div>
   </div>
 </header>
 
-<main class="h-100 w-100 pb-5">
+<main class=" w-100 vh-100 overflow-auto" style="padding-top: 110px; padding-bottom:100px;">
   <!-- PAGE CONTAINER-->
   <div class="container">
     <!-- MAIN CONTENT-->
@@ -45,7 +39,7 @@
 </main>
 
 <!-- END PAGE CONTAINER-->
-<footer class="bg-dark sticky-bottom" align="center">
+<footer class="bg-dark fixed-bottom" align="center">
   <div class="container">
     <div class="row py-3">
       <div class="col">

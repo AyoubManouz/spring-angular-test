@@ -1,0 +1,48 @@
+<div *ngIf="articles?.length > 0" class="">
+    <div class="d-flex flex-column md-2 bg-light p-2 text-center my-3">
+          <h5 class="fw-bold">{{ totalArticles }} Articles</h5>
+          <h4 class="fw-bold">{{ totalPrice | currency:'MAD':'symbol':'':'fr' }}</h4>
+          <div class="fw-bold">
+            <button class="btn btn-dark">Purchase</button>
+          </div>
+      </div>
+  <table class="table table-bordered text-center align-middle">
+    <thead class="bg-dark text-light">
+      <tr>
+        <th width="20%">Article Picture</th>
+        <th width="50%">Article Name</th>
+        <th width="20%">Article Price</th>
+        <th width="10%">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let article of articles" class="fw-bold">
+        <td>
+          <img
+            src="{{ article.picture }}"
+            class="img-responsive"
+            width="100px"
+          />
+        </td>
+
+        <td>{{ article.name }}</td>
+        <td>{{ article.price | currency: "MAD":"symbol":"":"fr" }}</td>
+        <td>
+          <button (click)="addOrRemoveArticle(article)" class="btn btn-dark">
+            Remove
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- if no articles found -->
+<div
+  *ngIf="articles?.length == 0"
+  class="alert alert-dark col-md-12 fw-bold"
+  role="alert"
+>
+  No articles found.
+</div>
