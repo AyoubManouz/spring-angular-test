@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Article } from '../common/article';
-import { OrderService } from './order.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +11,7 @@ export class CartService {
   totalPrice: Subject<number> = new Subject<number>();
   totalArticles: Subject<number> = new Subject<number>();
 
-  constructor(private orderService: OrderService) {}
+  constructor() {}
 
   addOrRemoveArticle(article: Article) {
     let existedArticle: Article = this.existedArticle(article);

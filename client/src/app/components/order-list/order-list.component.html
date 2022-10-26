@@ -1,29 +1,70 @@
-<div *ngFor="let order of orders" class="my-3">
-  <div class="row">
-    <div class="col-6">
-      {{ order.reference }}
-    </div>
-    <div class="col-6">
-      {{ order.date }}
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <table class="table">
-        <thead>
-          <th>Picture</th>
-          <th>Name</th>
-          <th>Price</th>
-        </thead>
+<h1 class="fw-bold text-center mb-3">Orders</h1>
 
-        <tbody>
-          <tr *ngFor="let article of order.articles">
-            <td><img src="{{ article.picture }}" alt="" height="100" class="img-responsive" /></td>
-            <td>{{ article.name }}</td>
-            <td>{{ article.price | currency:'MAD':'symbol':'':'fr' }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+<table
+  *ngIf="orders?.length !== 0"
+  class="table table-hover border border-dark rounded text-center"
+>
+  <thead class="table-dark">
+    <tr>
+      <th width="10%">Reference</th>
+      <th width="10%">Date</th>
+      <th width="70%">Articles</th>
+      <th width="10%"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let order of orders"
+      class="text-center align-middle fw-bold border rounded"
+    >
+      <td>{{ order.reference }}</td>
+      <td>{{ order.date | date }} {{ order.date | date: "shortTime" }}</td>
+      <td>
+        <!-- if no articles found -->
+        <div
+          *ngIf="order.articles?.length == 0"
+          class="alert alert-dark col-md-12 fw-bold"
+          role="alert"
+        >
+          No articles found.
+        </div>
+        <div class="row border-bottom" *ngFor="let article of order.articles">
+          <div class="col-lg-2 align-middle">
+            <img
+              src="{{ article.picture }}"
+              class="img-responsive"
+              width="50px"
+            />
+          </div>
+
+          <div class="col-lg-8 align-middle">
+            {{ article.name }}
+          </div>
+
+          <div class="col-lg-2 align-middle">
+            {{ article.price | currency: "MAD":"symbol":"":"fr" }}
+          </div>
+        </div>
+      </td>
+
+      <td>
+        <div class="">
+          Total:
+          {{ getOrderTotalPrice(order.id) | currency: "MAD":"symbol":"":"fr" }}
+        </div>
+        <a routerLink="/orders/edit/{{ order.id }}" class="btn btn-dark">
+          Edit
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- if no articles found -->
+<div
+  *ngIf="orders?.length == 0"
+  class="alert alert-dark col-md-12 fw-bold"
+  role="alert"
+>
+  No Orders found.
 </div>

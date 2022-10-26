@@ -1,0 +1,16 @@
+<div
+  class="d-flex d-none d-md-flex flex-row justify-content-end align-items-center"
+>
+  <span class="bg-dark p-2">
+    <a routerLink="/orders">
+      <div class="text-light fw-bold">
+        <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
+      </div>
+    </a>
+  </span>
+  <div class="d-flex flex-column ms-2">
+    <a class="btn" routerLink="/orders">
+      <div class="fw-bold text-justify">{{ orders?.length }} Orders</div>
+    </a>
+  </div>
+</div>

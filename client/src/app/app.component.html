@@ -1,10 +1,10 @@
 <header class="header-main border-bottom shadow-xl-bottom bg-light fixed-top">
   <div class="container-fluid">
     <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
-      <div class="col-sm-2" align="center">
+      <div class="col-sm-4" align="center">
         <div class="d-flex justify-content-start">
           <a routerLink="/articles">
-          <img
+            <img
               class="d-none d-md-flex"
               src="assets/pictures/shoes-paris.png"
               width="120"
@@ -13,7 +13,7 @@
         </div>
       </div>
 
-      <div class="col-sm-8" align="center">
+      <div class="col-sm-4" align="center">
         <a routerLink="/articles">
           <img
             src="assets/pictures/shoes-paris-brand.png"
@@ -24,13 +24,20 @@
       </div>
 
       <div class="col-sm-2">
+        <app-order-status></app-order-status>
+      </div>
+
+      <div class="col-sm-2">
         <app-cart-status></app-cart-status>
       </div>
     </div>
   </div>
 </header>
 
-<main class=" w-100 vh-100 overflow-auto" style="padding-top: 110px; padding-bottom:100px;">
+<main
+  class="w-100 vh-100 overflow-auto"
+  style="padding-top: 110px; padding-bottom: 100px"
+>
   <!-- PAGE CONTAINER-->
   <div class="container">
     <!-- MAIN CONTENT-->

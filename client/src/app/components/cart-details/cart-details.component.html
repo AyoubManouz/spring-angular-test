@@ -1,9 +1,11 @@
+<h1 class="fw-bold text-center mb-3">Cart</h1>
+
 <div *ngIf="articles?.length > 0" class="">
     <div class="d-flex flex-column md-2 bg-light p-2 text-center my-3">
           <h5 class="fw-bold">{{ totalArticles }} Articles</h5>
           <h4 class="fw-bold">{{ totalPrice | currency:'MAD':'symbol':'':'fr' }}</h4>
           <div class="fw-bold">
-            <button class="btn btn-dark">Purchase</button>
+            <button class="btn btn-dark">Make an Order</button>
           </div>
       </div>
   <table class="table table-bordered text-center align-middle">

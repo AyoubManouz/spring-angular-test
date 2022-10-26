@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Order } from '../common/order';
 
@@ -14,8 +14,6 @@ export class OrderService {
   constructor(private httpClient: HttpClient) { }
 
   getOrderList(): Observable<Order[]> {
-    return this.httpClient.get<Order[]>(this.baseUrl).pipe(
-      map(response => response)
-    );
+    return this.httpClient.get<Order[]>(this.baseUrl);
   }
 }

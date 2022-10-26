@@ -9,8 +9,10 @@ import { RouterModule,Routes } from '@angular/router';
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
+import { OrderStatusComponent } from './components/order-status/order-status.component';
 
 const routes: Routes = [
+  {path: 'orders', component: OrderListComponent},
   {path: 'cart', component: CartDetailsComponent},
   {path: 'articles', component: ArticleListComponent},
   {path: '', redirectTo: '/articles', pathMatch:'full'},
@@ -23,7 +25,8 @@ const routes: Routes = [
     ArticleListComponent,
     OrderListComponent,
     CartDetailsComponent,
-    CartStatusComponent
+    CartStatusComponent,
+    OrderStatusComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
