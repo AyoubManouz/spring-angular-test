@@ -14,7 +14,7 @@ INSERT INTO ARTICLE(NAME, PRICE, PICTURE) VALUES ('Fashion Men Casual Fashion Sn
 
 
 -- -----------------------------------------------------
--- Articles
+-- Orders
 -- -----------------------------------------------------
 INSERT INTO ORDER (DATE, REFERENCE) VALUES (NOW(), 'cLB8JM');
 INSERT INTO ORDER (DATE, REFERENCE) VALUES (NOW(), 'DNPvI2');

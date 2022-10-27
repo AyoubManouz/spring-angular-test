@@ -10,8 +10,11 @@ import { OrderListComponent } from './components/order-list/order-list.component
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { OrderStatusComponent } from './components/order-status/order-status.component';
+import { AddArticleComponent } from './components/add-article/add-article.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
+  {path: 'articles/add', component: AddArticleComponent},
   {path: 'orders', component: OrderListComponent},
   {path: 'cart', component: CartDetailsComponent},
   {path: 'articles', component: ArticleListComponent},
@@ -26,12 +29,14 @@ const routes: Routes = [
     OrderListComponent,
     CartDetailsComponent,
     CartStatusComponent,
-    OrderStatusComponent
+    OrderStatusComponent,
+    AddArticleComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [ArticleService],
   bootstrap: [AppComponent]

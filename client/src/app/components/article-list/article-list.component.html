@@ -1,4 +1,12 @@
-<div class="row">
+<div class="row position-relative">
+    <div class="position-absolute top-0 end-0">
+        <a routerLink="/articles/add" class="btn btn-cercle btn-dark fw-bold px-3 align-middle position-absolute top-0 end-0 border">
+            <h6>
+                <i class="fa-solid fa-plus"></i> Add Article
+            </h6>
+        </a>
+    </div>
+    
     <div *ngFor="let article of articles" class="col-md-4" align="center">
         <div>
             <img src="{{ article.picture }}" alt="" height="300" class="img-responsive" />

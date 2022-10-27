@@ -1,0 +1,140 @@
+<div
+  class="d-flex align-items-center flex-column w-100 rounded p-5 align-center text-center"
+  style="height: 80vh"
+>
+  <h1 class="fw-bold">Add Article</h1>
+  <div
+    class="block bg-light p-3 rounded d-flex align-items-center flex-column"
+    style="width: 60%"
+  >
+    <div class="rounded border bg-white" style="width: 200px; height: 200px">
+      <img
+        [src]="imageFile ? imageFile.link : ''"
+        class="img-fluid"
+        height="200px"
+      />
+    </div>
+    <form
+      [formGroup]="articleFormGroup"
+      class="my-3 w-100"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="row align-items-center py-2">
+        <div class="col-md-2 fw-bold">
+          <label>Picture</label>
+        </div>
+        <div class="col-md-8">
+          <input
+            class="form-control form-control-sm"
+            accept="image/*"
+            (change)="imagesPreview($event)"
+            type="file"
+          />
+        </div>
+      </div>
+
+      <div class="row align-items-center py-2">
+        <div class="col-md-2 fw-bold">
+          <label>Name</label>
+        </div>
+        <div class="col-md-8">
+          <input
+            class="w-100 px-2 rounded"
+            formControlName="name"
+            type="text"
+          />
+        </div>
+      </div>
+
+      <div class="row align-items-center py-2">
+        <div class="col-md-2 fw-bold">
+          <label>Price</label>
+        </div>
+        <div class="col-md-8">
+          <input
+            class="w-100 px-2 rounded"
+            formControlName="price"
+            type="text"
+          />
+        </div>
+        <div class="col-md-1 fw-bold">
+          <label>MAD</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div
+            *ngIf="picture.invalid && (picture.dirty || picture.touched)"
+            class="alert alert-danger py-0"
+          >
+            <div *ngIf="picture.errors?.['required']">
+              <small>
+                <i class="fa-sharp fa-solid fa-xmark"></i> picture is required.
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div
+            *ngIf="name.invalid && (name.dirty || name.touched)"
+            class="alert alert-danger py-0"
+          >
+            <div
+              *ngIf="name.errors?.['required'] || name.errors?.['notOnlyWhitespace']"
+            >
+              <small>
+                <i class="fa-sharp fa-solid fa-xmark"></i> Name is required.
+              </small>
+            </div>
+            <div *ngIf="name.errors?.['minlength']">
+              <small>
+                <i class="fa-sharp fa-solid fa-xmark"></i> Name must be at least
+                2 characters long.
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div
+            *ngIf="price.invalid && (price.dirty || price.touched)"
+            class="alert alert-danger py-0"
+          >
+            <div
+              *ngIf="price.errors?.['required'] || price.errors?.['notOnlyWhitespace']"
+            >
+              <small>
+                <i class="fa-sharp fa-solid fa-xmark"></i> Price is required.
+              </small>
+            </div>
+
+            <div *ngIf="price.errors?.['min']">
+              <small>
+                <i class="fa-sharp fa-solid fa-xmark"></i>
+                Price must not be negative.
+              </small>
+            </div>
+
+            <div *ngIf="price.errors?.['pattern']">
+              <small>
+                <i class="fa-sharp fa-solid fa-xmark"></i>
+                Price is not valid.
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-dark py-1 px-3">Add Article</button>
+    </form>
+  </div>
+</div>
