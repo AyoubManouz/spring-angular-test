@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Order } from 'src/app/common/order';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { OrderService } from 'src/app/services/order.service';
 })
 export class OrderStatusComponent implements OnInit {
 
-  orders: Order[] = [];
+  totalOrders: number = 0;
 
   constructor(private orderService: OrderService) { }
 
@@ -18,10 +17,9 @@ export class OrderStatusComponent implements OnInit {
   }
 
   listOrders() {
-    this.orderService.getOrderList().subscribe(
-      data => {
-        this.orders = data;
-      }
+    this.orderService.computeTotalOrders();
+    this.orderService.totalOrders.subscribe(
+      data => this.totalOrders = data
     )
   }
 

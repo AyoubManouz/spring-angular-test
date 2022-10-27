@@ -51,11 +51,10 @@ export class AddArticleComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.articleFormGroup.get('picture').setValue("assets/pictures/articles/" + this.imageFile.name);
-    if(this.articleFormGroup.invalid) this.articleFormGroup.markAllAsTouched();
+    if(this.articleFormGroup.invalid)
+     this.articleFormGroup.markAllAsTouched();
     else {
-      console.log(this.imageFile);
-      console.log(this.articleFormGroup.value);
+      this.articleFormGroup.get('picture').setValue("assets/pictures/articles/" + this.imageFile.name);
       this.articleService.addArticle(this.articleFormGroup.value);
     }
   }

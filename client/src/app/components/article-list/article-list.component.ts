@@ -21,7 +21,7 @@ export class ArticleListComponent implements OnInit {
   listArticles() {
     this.articleService.getArticleList().subscribe(
       data => {
-        this.articles = data;
+        this.articles = data.reverse();
       }
     )
   }

@@ -37,4 +37,9 @@ export class CartService {
   existedArticle(article: Article): Article {
     return this.articles.find((item) => item.id === article.id);
   }
+
+  reset() {
+    this.articles = [];
+    this.computeCartTotals();
+  }
 }

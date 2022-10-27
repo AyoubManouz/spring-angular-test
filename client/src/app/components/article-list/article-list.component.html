@@ -1,27 +1,43 @@
 <div class="row position-relative">
-    <div class="position-absolute top-0 end-0">
-        <a routerLink="/articles/add" class="btn btn-cercle btn-dark fw-bold px-3 align-middle position-absolute top-0 end-0 border">
-            <h6>
-                <i class="fa-solid fa-plus"></i> Add Article
-            </h6>
-        </a>
+  <div class="position-absolute top-0 end-0">
+    <a
+      routerLink="/articles/add"
+      class="btn btn-cercle btn-dark fw-bold px-3 align-middle position-absolute top-0 end-0 border btn-md"
+    >
+      <i class="fa-solid fa-plus"></i> Add Article
+    </a>
+  </div>
+
+  <div *ngFor="let article of articles" class="col-md-4" align="center">
+    <div>
+      <img
+        src="{{ article.picture }}"
+        alt=""
+        height="250"
+        class="img-responsive"
+      />
     </div>
-    
-    <div *ngFor="let article of articles" class="col-md-4" align="center">
-        <div>
-            <img src="{{ article.picture }}" alt="" height="300" class="img-responsive" />
-        </div>
-        
-        <h5><strong>{{ article.name }}</strong></h5>
-        <h6>{{ article.price | currency:'MAD':'symbol':'':'fr' }}</h6>
-        <button (click)="addOrRemoveArticle(article)" class="border-0 btn-sm">
-            <span class="btn btn-dark" *ngIf="!isExistedInCart(article)" >Add to Cart</span>
-            <span class="btn btn-light" *ngIf="isExistedInCart(article)" >Remove from Cart</span>
-        </button>
-    </div>
+
+    <h5>
+      <strong>{{ article.name }}</strong>
+    </h5>
+    <h6>{{ article.price | currency: "MAD":"symbol":"":"fr" }}</h6>
+    <button (click)="addOrRemoveArticle(article)" class="border-0 btn-sm">
+      <span class="btn btn-dark" *ngIf="!isExistedInCart(article)"
+        >Add to Cart</span
+      >
+      <span class="btn btn-light" *ngIf="isExistedInCart(article)"
+        >Remove from Cart</span
+      >
+    </button>
+  </div>
 </div>
 
 <!-- if no articles found -->
-<div *ngIf="articles?.length == 0" class="alert alert-dark col-md-12 mt-5 fw-bold" role="alert">
-    No articles found.
+<div
+  *ngIf="articles?.length == 0"
+  class="alert alert-dark col-md-12 mt-5 fw-bold"
+  role="alert"
+>
+  No articles found.
 </div>

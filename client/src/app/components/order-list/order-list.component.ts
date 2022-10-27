@@ -18,7 +18,7 @@ export class OrderListComponent implements OnInit {
 
   listOrders() {
     this.orderService.getOrderList().subscribe((data) => {
-      this.orders = data;
+      this.orders = data.reverse();
     });
   }
 

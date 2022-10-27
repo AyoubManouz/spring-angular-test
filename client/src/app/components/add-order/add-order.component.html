@@ -1,0 +1,43 @@
+<div
+  class="d-flex align-items-center flex-column w-100 rounded align-center text-center"
+  style="height: 80vh;"
+>
+  <h1 class="fw-bold">Add Order</h1>
+  <div
+    class="block bg-light p-3 rounded d-flex align-items-center flex-column"
+    style="width: 80%;"
+  >
+  <div class="container w-100" style="margin-bottom: 5vh;">
+    <div class="row">
+        <div class="col-lg-3">
+            <h6 class="fw-bold">Reference :</h6>
+        </div>
+        <div class="col-lg-3">
+            <h6 class="fw-bold">{{ order.reference }}</h6>
+        </div>
+        <div class="col-lg-3">
+            <h6 class="fw-bold">Date :</h6>
+        </div>
+        <div class="col-lg-3">
+            <h6 class="fw-bold">{{ order.date | date }} {{ order.date | date: "shortTime" }}</h6>
+        </div>
+        <div class="col-lg-12 p-3">
+            <h3 class="fw-bold">Total Price : {{ totalPrice | currency: "MAD":"symbol":"":"fr" }}</h3>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div *ngFor="let article of order.articles" class="col-lg-4" align="center">
+            <div>
+                <img src="{{ article.picture }}" alt="" height="100" class="img-responsive" />
+            </div>
+            
+            <h5><strong>{{ article.name }}</strong></h5>
+            <h6>{{ article.price | currency:'MAD':'symbol':'':'fr' }}</h6>
+        </div>
+      </div>
+      <button class="btn btn-dark rounded my-2" (click)="submitOrder()">Purchase</button>
+  </div>
+    
+  </div>
+</div>
