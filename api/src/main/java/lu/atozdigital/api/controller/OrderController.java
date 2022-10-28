@@ -59,4 +59,13 @@ public class OrderController {
 
         return ResponseEntity.ok().body(orderResponse);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<OrderDto> getOrder(@PathVariable int id) {
+        Order order = orderService.getOrder(id);
+        if(order == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        // entity to DTO
+        OrderDto orderResponse = modelMapper.map(order, OrderDto.class);
+        return ResponseEntity.ok().body(orderResponse);
+    }
 }

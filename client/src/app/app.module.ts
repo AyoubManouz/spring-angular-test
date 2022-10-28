@@ -13,8 +13,10 @@ import { OrderStatusComponent } from './components/order-status/order-status.com
 import { AddArticleComponent } from './components/add-article/add-article.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddOrderComponent } from './components/add-order/add-order.component';
+import { EditOrderComponent } from './components/edit-order/edit-order.component';
 
 const routes: Routes = [
+  {path: 'orders/edit/:id', component: EditOrderComponent},
   {path: 'orders/add', component: AddOrderComponent},
   {path: 'articles/add', component: AddArticleComponent},
   {path: 'orders', component: OrderListComponent},
@@ -33,7 +35,8 @@ const routes: Routes = [
     CartStatusComponent,
     OrderStatusComponent,
     AddArticleComponent,
-    AddOrderComponent
+    AddOrderComponent,
+    EditOrderComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

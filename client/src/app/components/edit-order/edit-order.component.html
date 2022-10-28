@@ -1,0 +1,111 @@
+<div
+  class="d-flex align-items-center flex-column w-100 rounded align-center text-center"
+  style="height: 80vh"
+>
+  <h1 class="fw-bold">Add Order</h1>
+  <div
+    class="block bg-light p-3 rounded d-flex align-items-center flex-column"
+    style="width: 90%"
+  >
+    <div class="container w-100" style="margin-bottom: 10vh">
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="fw-bold">Reference :</h6>
+        </div>
+        <div class="col-sm-3">
+          <h6 class="fw-bold">{{ order.reference }}</h6>
+        </div>
+        <div class="col-sm-3">
+          <h6 class="fw-bold">Date :</h6>
+        </div>
+        <div class="col-sm-3">
+          <h6 class="fw-bold">
+            {{ order.date | date }} {{ order.date | date: "shortTime" }}
+          </h6>
+        </div>
+        <div class="col-sm-12 p-3">
+          <h3 class="fw-bold">
+            Total Price : {{ totalPrice | currency: "MAD":"symbol":"":"fr" }}
+          </h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div
+          *ngFor="let article of order.articles"
+          class="col-lg-3 col-md-6"
+          align="center"
+        >
+          <div>
+            <img
+              src="{{ article.picture }}"
+              alt=""
+              height="100"
+              class="img-responsive"
+            />
+          </div>
+
+          <h6>
+            <strong>{{ article.name }}</strong>
+          </h6>
+          <h6>{{ article.price | currency: "MAD":"symbol":"":"fr" }}</h6>
+          <button
+            class="btn btn-dark rounded my-2 btn-sm"
+            (click)="addOrRemoveArticle(article)"
+          >
+            Remove
+          </button>
+        </div>
+      </div>
+
+      <h4 class="fw-bold">Other Articles</h4>
+      <div class="w-100 overflow-auto bg-white border rounded">
+        <div class="row flex-row flex-nowrap">
+          <div
+            class="col-lg-3 inline-block"
+            *ngFor="let article of otherArticles()"
+          >
+            <div>
+              <img
+                src="{{ article.picture }}"
+                alt=""
+                height="100"
+                class="img-responsive"
+              />
+            </div>
+
+            <h6>
+              <strong>{{ article.name }}</strong>
+            </h6>
+            <h6>{{ article.price | currency: "MAD":"symbol":"":"fr" }}</h6>
+            <button
+              class="btn btn-dark rounded my-2 btn-sm"
+              (click)="addOrRemoveArticle(article)"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <button
+            class="btn btn-secondary rounded my-2 btn-md"
+            (click)="cancel()"
+          >
+            Cancel
+          </button>
+        </div>
+        <div class="col-md-6">
+          <button
+            class="btn btn-dark rounded my-2 btn-md"
+            (click)="editOrder()"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
