@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ArticleService } from 'src/app/services/article.service';
 import { FormValidators } from 'src/app/validators/form-validators';
 
@@ -15,7 +16,7 @@ export class AddArticleComponent implements OnInit {
 
   imageFile: {link: string, file: any, name: string};
 
-  constructor(private articleService: ArticleService, private formBuilder: FormBuilder) { }
+  constructor(private articleService: ArticleService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.articleFormGroup = this.formBuilder.group({
@@ -55,7 +56,9 @@ export class AddArticleComponent implements OnInit {
      this.articleFormGroup.markAllAsTouched();
     else {
       this.articleFormGroup.get('picture').setValue("assets/pictures/articles/" + this.imageFile.name);
-      this.articleService.addArticle(this.articleFormGroup.value);
+      this.articleService.addArticle(this.articleFormGroup.value).subscribe((data) => {
+        this.router.navigate(['/articles']);
+      });
     }
   }
 

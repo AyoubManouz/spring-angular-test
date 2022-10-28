@@ -1,34 +1,26 @@
 <header class="header-main border-bottom shadow-xl-bottom bg-light fixed-top">
   <div class="container-fluid">
     <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
-      <div class="col-sm-4" align="center">
+      <div class="col-3" align="center">
         <div class="d-flex justify-content-start">
           <a routerLink="/articles">
-            <img
-              class="d-none d-md-flex"
-              src="assets/pictures/shoes-paris.png"
-              width="120"
-            />
+            <div class="d-flex px-5">
+              <img
+                src="assets/pictures/shoes-paris-brand.png"
+                width="120"
+                alt="shoes-paris"
+              />
+            </div>
           </a>
         </div>
       </div>
 
-      <div class="col-sm-4" align="center">
-        <a routerLink="/articles">
-          <img
-            src="assets/pictures/shoes-paris-brand.png"
-            width="120"
-            alt="shoes-paris"
-          />
-        </a>
-      </div>
-
-      <div class="col-sm-2">
-        <app-order-status></app-order-status>
-      </div>
-
-      <div class="col-sm-2">
-        <app-cart-status></app-cart-status>
+      <div class="col">
+        <div class="d-flex align-items-center justify-content-end px-5" *ngIf="isConnected">
+            <app-order-status></app-order-status>
+            <app-cart-status></app-cart-status>
+            <app-logout></app-logout>
+        </div>
       </div>
     </div>
   </div>

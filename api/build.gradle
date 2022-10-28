@@ -20,6 +20,7 @@ dependencies {
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.modelmapper:modelmapper:3.1.0'
+	implementation "org.springframework.boot:spring-boot-starter-security"
 }
 
 tasks.named('test') {

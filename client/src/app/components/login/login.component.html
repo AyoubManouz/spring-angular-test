@@ -1,0 +1,53 @@
+<div
+  class="d-flex align-items-center flex-column w-100 rounded p-5 align-center text-center"
+  style="height: 80vh"
+>
+  <div
+    class="block bg-light p-3 rounded d-flex align-items-center flex-column"
+    style="width: 60%"
+  >
+    <div class="rounded" style="width: 200px; height: 200px">
+      <img
+        src="favicon.ico"
+        class="img-fluid"
+        height="200px"
+      />
+    </div>
+    <form
+      [formGroup]="loginForm"
+      class="my-3 w-100"
+      (ngSubmit)="handleLogin()"
+    >
+      <div class="row align-items-center py-2">
+        <div class="col-lg-3 fw-bold">
+          <label>Username :</label>
+        </div>
+        <div class="col-lg-9">
+          <input
+            class="w-100 px-2 rounded"
+            formControlName="username"
+            type="text"
+          />
+        </div>
+      </div>
+
+      <div class="row align-items-center py-2">
+        <div class="col-lg-3 fw-bold">
+          <label>Password :</label>
+        </div>
+        <div class="col-lg-9">
+          <input
+            class="w-100 px-2 rounded"
+            formControlName="password"
+            type="password"
+          />
+        </div>
+      </div>
+      
+      <div class="alert alert-warning py-2" *ngIf='invalidLogin'>{{errorMessage}}</div>
+      <div class="alert alert-success py-2" *ngIf='loginSuccess'>{{successMessage}}</div>
+
+      <button type="submit" class="btn btn-dark py-1 px-5 my-3">Add Article</button>
+    </form>
+  </div>
+</div>
