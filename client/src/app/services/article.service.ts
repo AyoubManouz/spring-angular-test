@@ -1,8 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Article } from '../common/article';
 
@@ -20,6 +20,16 @@ export class ArticleService {
   }
 
   addArticle(article: Article): Observable<Article> {
-    return this.httpClient.post<Article>(this.baseUrl, article);
+    return this.httpClient.post<Article>(this.baseUrl, article)
+    .pipe(catchError(this.handleError));
+  }
+
+  getArticle(id: number): Observable<Article> {
+    return this.httpClient.get<Article>(this.baseUrl + '/' + id)
+    .pipe(catchError(this.handleError));
+  }
+
+  handleError(error: HttpErrorResponse) {
+    return throwError(error);
   }
 }

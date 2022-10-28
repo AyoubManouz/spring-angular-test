@@ -1,0 +1,39 @@
+<div
+  class="d-flex align-items-center flex-column w-100 rounded align-center text-center"
+  style="height: 80vh"
+>
+  <div
+    class="block bg-light p-3 rounded d-flex align-items-center flex-column"
+    style="width: 80%"
+  >
+    <div class="container w-100" style="margin-bottom: 10vh">
+      <div class="row">
+        <h1 class="fw-bold">{{ article.name }}</h1>
+      </div>
+      <div class="row">
+        <div class="mx-auto" style="max-width: 500px;">
+          <img
+            src="{{ article.picture }}"
+            alt=""
+            class="img-responsive w-100"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <h3 class="fw-bold">
+          {{ article.price | currency: "MAD":"symbol":"":"fr" }}
+        </h3>
+      </div>
+      <div class="row">
+        <button (click)="addOrRemoveArticle(article)" class="border-0 btn-sm">
+          <span class="btn btn-dark" *ngIf="!isExistedInCart(article)"
+            >Add to Cart</span
+          >
+          <span class="btn btn-light" *ngIf="isExistedInCart(article)"
+            >Remove from Cart</span
+          >
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

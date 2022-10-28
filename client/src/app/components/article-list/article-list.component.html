@@ -10,16 +10,20 @@
 
   <div *ngFor="let article of articles" class="col-md-4" align="center">
     <div>
-      <img
-        src="{{ article.picture }}"
-        alt=""
-        height="250"
-        class="img-responsive"
-      />
+      <a routerLink="/articles/{{ article.id }}" class="btn">
+        <img
+          src="{{ article.picture }}"
+          alt=""
+          height="250"
+          class="img-responsive"
+        />
+      </a>
     </div>
 
     <h5>
-      <strong>{{ article.name }}</strong>
+      <a routerLink="/articles/{{ article.id }}" class="btn">
+        <strong>{{ article.name }}</strong>
+      </a>
     </h5>
     <h6>{{ article.price | currency: "MAD":"symbol":"":"fr" }}</h6>
     <button (click)="addOrRemoveArticle(article)" class="border-0 btn-sm">
